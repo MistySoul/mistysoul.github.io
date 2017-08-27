@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,7 +100,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL容器总览">
 <meta property="og:url" content="https://mistysoul.github.io/2017/08/18/STL容器总览/index.html">
-<meta property="og:site_name" content="Crux">
+<meta property="og:site_name" content="Crux&#39;s Notes">
 <meta property="og:description" content="本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。  STL容器提供了各种满足使用者需求的功能，其中有三种核心特性：   所有容器提供值传递而不是引用传递语义。当一个元素被插入到容器中时，容器内部会拷贝和移动已有元素而不是通过管理元素的引用。 容器中的元素是按照一定顺序分布的。每种类型的容器均提供了返回指向元素的迭代器的方法。而迭代器作为STL算法相关函数的主要入参，友好">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-27T15:37:59.000Z">
@@ -114,7 +114,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     version: '5.1.2',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -142,7 +142,7 @@
 
 
 
-  <title>STL容器总览 | Crux</title>
+  <title>STL容器总览 | Crux's Notes</title>
   
 
 
@@ -172,7 +172,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Crux</span>
+        <span class="site-title">Crux's Notes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -278,7 +278,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Crux">
+      <meta itemprop="name" content="Crux's Notes">
     </span>
 
     
@@ -623,10 +623,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
@@ -636,12 +636,58 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MistySoul" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Github
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/2677956453" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://daozhihun.com" title="刀之魂" target="_blank">刀之魂</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://kingsamchen.github.io/" title="KC" target="_blank">KC</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jm.taobao.org" title="阿里中间件" target="_blank">阿里中间件</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -696,7 +742,7 @@
 
   <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.2</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
 
 
         
@@ -739,6 +785,8 @@
   
 
 
+  
+
 
 
 
@@ -767,6 +815,9 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
 
   
 
@@ -779,13 +830,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
 
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
