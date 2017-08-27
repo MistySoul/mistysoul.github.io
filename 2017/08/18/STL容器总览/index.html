@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="STL,Containers," />
 
 
 
@@ -95,16 +95,18 @@
 
 
 
-<meta name="description" content="以喜欢的方式去过自己的生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Crux">
-<meta property="og:url" content="https://mistysoul.github.io/index.html">
+<meta name="description" content="本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。  STL容器提供了各种满足使用者需求的功能，其中有三种核心特性：   所有容器提供值传递而不是引用传递语义。当一个元素被插入到容器中时，容器内部会拷贝和移动已有元素而不是通过管理元素的引用。 容器中的元素是按照一定顺序分布的。每种类型的容器均提供了返回指向元素的迭代器的方法。而迭代器作为STL算法相关函数的主要入参，友好">
+<meta name="keywords" content="STL,Containers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL容器总览">
+<meta property="og:url" content="https://mistysoul.github.io/2017/08/18/STL容器总览/index.html">
 <meta property="og:site_name" content="Crux">
-<meta property="og:description" content="以喜欢的方式去过自己的生活">
+<meta property="og:description" content="本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。  STL容器提供了各种满足使用者需求的功能，其中有三种核心特性：   所有容器提供值传递而不是引用传递语义。当一个元素被插入到容器中时，容器内部会拷贝和移动已有元素而不是通过管理元素的引用。 容器中的元素是按照一定顺序分布的。每种类型的容器均提供了返回指向元素的迭代器的方法。而迭代器作为STL算法相关函数的主要入参，友好">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-27T15:37:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Crux">
-<meta name="twitter:description" content="以喜欢的方式去过自己的生活">
+<meta name="twitter:title" content="STL容器总览">
+<meta name="twitter:description" content="本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。  STL容器提供了各种满足使用者需求的功能，其中有三种核心特性：   所有容器提供值传递而不是引用传递语义。当一个元素被插入到容器中时，容器内部会拷贝和移动已有元素而不是通过管理元素的引用。 容器中的元素是按照一定顺序分布的。每种类型的容器均提供了返回指向元素的迭代器的方法。而迭代器作为STL算法相关函数的主要入参，友好">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://mistysoul.github.io/"/>
+  <link rel="canonical" href="https://mistysoul.github.io/2017/08/18/STL容器总览/"/>
 
 
 
 
 
-  <title>Crux</title>
+  <title>STL容器总览 | Crux</title>
   
 
 
@@ -159,8 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,133 +254,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/08/27/CPP11新特性与应用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crux">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Crux">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/27/CPP11新特性与应用/" itemprop="url">CPP11新特性与应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T20:34:13+08:00">
-                2017-08-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>本文主要整理了C++11新特性相关笔记，用以学习掌握</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/27/CPP11新特性与应用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -409,9 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/18/STL容器总览/" itemprop="url">STL容器总览</a></h1>
+          <h1 class="post-title" itemprop="name headline">STL容器总览</h1>
         
 
         <div class="post-meta">
@@ -461,8 +336,7 @@
       
 
       
-        
-          <p><em>本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。</em></p>
+        <p><em>本章主要介绍STL容器，包括各类型容器的内部数据结构，常用操作以及性能差异。</em></p>
 <hr>
 <p>STL容器提供了各种满足使用者需求的功能，其中有三种核心特性：</p>
 <blockquote>
@@ -472,15 +346,149 @@
 <li>通常情况下，容器上的操作并不是安全的。它们并没有办法检测到所有错误或异常。因此需要调用者来保证以正确的方式来使用容器。</li>
 </ul>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/18/STL容器总览/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a><strong>操作</strong></h2><p>C++标准定义一系列的标准（需求）来要求所有的STL容器需要遵循。不过由于C++11中提供了多样化的容器，而且可能在某些操作上，会存在异常情况，因此并不是所有容器都实现了标准定义的需求。同时，也不仅仅受限于标准，部分容器还提供了标准以外的接口支持。</p>
+<p>以下列出大部分容器均支持的操作,其中Req一列标识着对应的操作为C++标准中所提出。</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Req</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ContType c</td>
+<td>Yes</td>
+<td>缺省构造函数，创建一个空的容器 </td>
+</tr>
+<tr>
+<td>ContType c(c2)</td>
+<td>Yes</td>
+<td>拷贝构造函数，通过c2拷贝一个新的容器</td>
+</tr>
+<tr>
+<td>ContType c = c3</td>
+<td>Yes</td>
+<td>拷贝构造函数</td>
+</tr>
+<tr>
+<td>ContType c(rv)</td>
+<td>Yes</td>
+<td>移动构造函数，创建一个新的容器，接管右值引用类型rv中的元素（C++ 11）</td>
+</tr>
+<tr>
+<td>ContType c = rv</td>
+<td>Yes</td>
+<td>移动构造函数</td>
+</tr>
+<tr>
+<td>ContType c(beg, end)</td>
+<td>-</td>
+<td>创建一个新的容器并以[beg, end)区间内的元素初始化(Array不支持)</td>
+</tr>
+<tr>
+<td>ContType c(initlist)</td>
+<td>-</td>
+<td>通过initlist进行初始化（C++ 11）</td>
+</tr>
+<tr>
+<td>ContType c = initlist</td>
+<td>-</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>c.~ContType()</td>
+<td>Yes</td>
+<td>析构函数，释放所有资源</td>
+</tr>
+<tr>
+<td>c.empty()</td>
+<td>Yes</td>
+<td>返回容器是否为空（性能优于size()==0）</td>
+</tr>
+<tr>
+<td>c.size()</td>
+<td>Yes</td>
+<td>返回当前容器中的元素个数（forward_list&lt;&gt;不支持）</td>
+</tr>
+<tr>
+<td>c1.swap(c2)</td>
+<td>Yes</td>
+<td>交换c1和c2的元素</td>
+</tr>
+<tr>
+<td>c.clear()</td>
+<td>-</td>
+<td>清除容器中所有的元素（<strong>并不会释放容器所占用的内存</strong>）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>自C++11之后，用户可以通过移动构造来初始化一个容器</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1;</div><div class="line"></div><div class="line"><span class="comment">//move contents of v1 into v2, state of v1 undefined afterward</span></div><div class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2 = <span class="built_in">std</span>::move(v1);</div></pre></td></tr></table></figure></p>
+<p>v2创建并且以v1内元素进行了初始化，这之后v1的行为将变得undefined,原因是这是一种移动构造，v1内的元素通过指针交换的形式，赋给了v2,使得v2可以通过指针来访问原本属于v1的元素。元素本身占用的内存并没有发生变化，v1内的指针值变成了NULL。也正因为如此，不存在任何拷贝元素的操作，使得性能大幅度提升。所以，当你确定某个容器不在需要时，可以使用move构造。</p>
+<p><strong>赋值操作：需要拷贝所有源容器内元素并且移除目标容器内已有的元素，因此该操作代价相当的昂贵</strong></p>
+<p><strong>谢天谢地，我们有移动语义（Since C++11）</strong></p>
+<p>C++98中提供了swap()接口，同样的仅仅是在内部进行指针的交换。所以swap可以保证是常数时间复杂度，而不像拷贝操作的线性复杂度。需要注意的是，array&lt;&gt;在swap上的表现不像其他容器。++原因将在后面单独分析array时补充++。</p>
+<hr>
+<p>所有容器都提供了一些通用类型的定义，详见下表</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Req</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size_type</td>
+<td>Yes</td>
+<td>Unsigned integral type for size values</td>
+</tr>
+<tr>
+<td>difference_type</td>
+<td>Yes</td>
+<td>Signed integral type for difference values</td>
+</tr>
+<tr>
+<td>value_type</td>
+<td>Yes</td>
+<td>Type of the elements</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Yes</td>
+<td>Type of element reference</td>
+</tr>
+<tr>
+<td>const_reference</td>
+<td>Yes</td>
+<td>Type of constant element reference</td>
+</tr>
+<tr>
+<td>iterator</td>
+<td>Yes</td>
+<td>Type of iterators</td>
+</tr>
+<tr>
+<td>const_iterator</td>
+<td>Yes</td>
+<td>Type of constant iterators</td>
+</tr>
+<tr>
+<td>pointer</td>
+<td>-</td>
+<td>Type of pointers to elements(since C++11)</td>
+</tr>
+<tr>
+<td>const_pointer</td>
+<td>-</td>
+<td>Type of pointers to read-only elements(since C++11)</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     
@@ -495,145 +503,42 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/08/16/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crux">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Crux">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/16/hello-world/" itemprop="url">新的开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T19:12:16+08:00">
-                2017-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/STL/" rel="tag"># STL</a>
           
-            
+            <a href="/tags/Containers/" rel="tag"># Containers</a>
           
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="欢迎来到Crux的个人空间"><a href="#欢迎来到Crux的个人空间" class="headerlink" title="欢迎来到Crux的个人空间"></a>欢迎来到Crux的个人空间</h1><hr>
-<p>2013-2014年期间，坚持写过挺长时间的博客。当时购买了域名（www.mistysoul.com）以及虚拟主机。在运营了两年时间左右，由于工作变动，经常加班，荒废了博客。域名和虚拟主机均已废弃。<br>不过始终觉得写博客对于一个IT人员来说是个非常好的习惯，因此就有了目前你所看到的。在此需要特别感谢Hexo + github。</p>
-<p>在这里你可以看到：</p>
-<blockquote>
-<ul>
-<li>知识整理，学习笔记 </li>
-<li>工作经验总结</li>
-<li>发布日记，杂文，所见所想</li>
-<li>撰写发布技术文稿</li>
-</ul>
-</blockquote>
-<p><strong>最后，希望你能在这里有所收获</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/16/hello-world/" rel="next" title="新的开始">
+                <i class="fa fa-chevron-left"></i> 新的开始
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/27/CPP11新特性与应用/" rel="prev" title="CPP11新特性与应用">
+                CPP11新特性与应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -643,10 +548,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -654,6 +560,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -674,8 +584,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -730,6 +649,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -857,6 +792,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 
