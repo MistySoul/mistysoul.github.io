@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hello World," />
+  <meta name="keywords" content="C++,Effective C++," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="欢迎来到Crux的个人空间 2013-2014年期间，坚持写过挺长时间的博客。当时购买了域名（www.mistysoul.com）以及虚拟主机。在运营了两年时间左右，由于工作变动，经常加班，荒废了博客。域名和虚拟主机均已废弃。不过始终觉得写博客对于一个IT人员来说是个非常好的习惯，因此就有了目前你所看到的。在此需要特别感谢Hexo + github。 在这里你可以看到：   知识整理，学习笔记">
-<meta name="keywords" content="Hello World">
+<meta name="description" content="C++程序中最常使用的资源就是动态分配内存，但内存只是你必须管理的众多资源之一。其他常见的资源还包括文件描述符、互斥锁、图形界面中的字型和笔刷、数据库连接、以及网络socket。无论哪一种资源，当不再使用它时，必须将它还给系统。尝试在任何运用情况下都确保以上所言，是件困难的事。但当你考虑到异常、函数内多重回传路径、程序维护员改动却没有充分理解随之而来的冲击。态势就很明显了：资源管理的特殊手段还不很">
+<meta name="keywords" content="C++,Effective C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新的开始">
-<meta property="og:url" content="https://mistysoul.github.io/2017/08/16/hello-world/index.html">
+<meta property="og:title" content="Effective C++(三)">
+<meta property="og:url" content="https://mistysoul.github.io/2017/09/09/Effective-C-三/index.html">
 <meta property="og:site_name" content="Crux&#39;s Notes">
-<meta property="og:description" content="欢迎来到Crux的个人空间 2013-2014年期间，坚持写过挺长时间的博客。当时购买了域名（www.mistysoul.com）以及虚拟主机。在运营了两年时间左右，由于工作变动，经常加班，荒废了博客。域名和虚拟主机均已废弃。不过始终觉得写博客对于一个IT人员来说是个非常好的习惯，因此就有了目前你所看到的。在此需要特别感谢Hexo + github。 在这里你可以看到：   知识整理，学习笔记">
+<meta property="og:description" content="C++程序中最常使用的资源就是动态分配内存，但内存只是你必须管理的众多资源之一。其他常见的资源还包括文件描述符、互斥锁、图形界面中的字型和笔刷、数据库连接、以及网络socket。无论哪一种资源，当不再使用它时，必须将它还给系统。尝试在任何运用情况下都确保以上所言，是件困难的事。但当你考虑到异常、函数内多重回传路径、程序维护员改动却没有充分理解随之而来的冲击。态势就很明显了：资源管理的特殊手段还不很">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T15:37:44.000Z">
+<meta property="og:updated_time" content="2017-09-09T13:26:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新的开始">
-<meta name="twitter:description" content="欢迎来到Crux的个人空间 2013-2014年期间，坚持写过挺长时间的博客。当时购买了域名（www.mistysoul.com）以及虚拟主机。在运营了两年时间左右，由于工作变动，经常加班，荒废了博客。域名和虚拟主机均已废弃。不过始终觉得写博客对于一个IT人员来说是个非常好的习惯，因此就有了目前你所看到的。在此需要特别感谢Hexo + github。 在这里你可以看到：   知识整理，学习笔记">
+<meta name="twitter:title" content="Effective C++(三)">
+<meta name="twitter:description" content="C++程序中最常使用的资源就是动态分配内存，但内存只是你必须管理的众多资源之一。其他常见的资源还包括文件描述符、互斥锁、图形界面中的字型和笔刷、数据库连接、以及网络socket。无论哪一种资源，当不再使用它时，必须将它还给系统。尝试在任何运用情况下都确保以上所言，是件困难的事。但当你考虑到异常、函数内多重回传路径、程序维护员改动却没有充分理解随之而来的冲击。态势就很明显了：资源管理的特殊手段还不很">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://mistysoul.github.io/2017/08/16/hello-world/"/>
+  <link rel="canonical" href="https://mistysoul.github.io/2017/09/09/Effective-C-三/"/>
 
 
 
 
 
-  <title>新的开始 | Crux's Notes</title>
+  <title>Effective C++(三) | Crux's Notes</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/08/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/09/09/Effective-C-三/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crux">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">新的开始</h1>
+          <h1 class="post-title" itemprop="name headline">Effective C++(三)</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-16T19:12:16+08:00">
-                2017-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T21:25:43+08:00">
+                2017-09-09
               </time>
             
 
@@ -317,9 +317,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/16/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/09/Effective-C-三/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/16/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/09/Effective-C-三/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,18 +347,80 @@
       
 
       
-        <h1 id="欢迎来到Crux的个人空间"><a href="#欢迎来到Crux的个人空间" class="headerlink" title="欢迎来到Crux的个人空间"></a>欢迎来到Crux的个人空间</h1><hr>
-<p>2013-2014年期间，坚持写过挺长时间的博客。当时购买了域名（www.mistysoul.com）以及虚拟主机。在运营了两年时间左右，由于工作变动，经常加班，荒废了博客。域名和虚拟主机均已废弃。<br>不过始终觉得写博客对于一个IT人员来说是个非常好的习惯，因此就有了目前你所看到的。在此需要特别感谢Hexo + github。</p>
-<p>在这里你可以看到：</p>
+        <p>C++程序中最常使用的资源就是动态分配内存，但内存只是你必须管理的众多资源之一。其他常见的资源还包括文件描述符、互斥锁、图形界面中的字型和笔刷、数据库连接、以及网络socket。无论哪一种资源，当不再使用它时，必须将它还给系统。<br>尝试在任何运用情况下都确保以上所言，是件困难的事。但当你考虑到<strong>异常、函数内多重回传路径、程序维护员改动却没有充分理解随之而来的冲击</strong>。态势就很明显了：资源管理的特殊手段还不很充分够用。</p>
+<a id="more"></a>
+<ul>
+<li>以对象管理资源</li>
+</ul>
+<p>将资源放进对象内，我们便可以依赖C++的<strong>析构函数自动调用机制</strong>来确保资源被释放。类似智能指针(std::auto_ptr)这样的类型，其析构函数将会自动对其所指对象调用delete。</p>
 <blockquote>
 <ul>
-<li>知识整理，学习笔记 </li>
-<li>工作经验总结</li>
-<li>发布日记，杂文，所见所想</li>
-<li>撰写发布技术文稿</li>
+<li>获得资源后立刻放进管理对象内。实际上，以对象管理资源的观念通常被称为“资源取得时机便是初始化时机”(Resource acquistion Is Initialization; RAII)</li>
+<li>管理对象运用析构函数确保资源释放。</li>
 </ul>
 </blockquote>
-<p><strong>最后，希望你能在这里有所收获</strong></p>
+<p><strong>由于auto_ptr被销毁时会自动删除它所指之物。所以一定要注意别让多个auto_ptr指向同一个对象，否则将会引起多次释放，导致未定义行为</strong>。为了预防这个问题，在auto_ptr的实现上有一个不寻常的性质：<strong>若通过copy构造函数或copy assignment操作符复制它们，它们会变成null,而复制所得指针将取得资源的唯一拥有权！</strong>(这也是STL auto_ptr和其他智能指针tr1::shared_ptr在实现上的区别，其他智能指针内部通过引用计数的方式来保证仅释放一次资源)</p>
+<p>请记住：</p>
+<blockquote>
+<ul>
+<li>为防止资源泄露，请使用RAII对象，它们在构造函数中获得资源并在析构函数中释放资源。</li>
+<li>两个常备使用的RAII classes分别是tr1::shared_ptr和std::auto_ptr。前者通常是较佳的选择，因为其copy行为比较直观，后者复制动作会使它（被复制物）指向null.</li>
+</ul>
+</blockquote>
+<hr>
+<ul>
+<li>在资源管理类中小心copying行为</li>
+</ul>
+<p>当一个RAII对象被复制，会发生什么事？大多时候有两种可能：</p>
+<blockquote>
+<ul>
+<li>禁止复制</li>
+<li>对底层资源祭出“引用计数法”</li>
+</ul>
+</blockquote>
+<hr>
+<ul>
+<li>在资源管理类中提供对原始资源的访问</li>
+</ul>
+<blockquote>
+<ul>
+<li>显式方法：提供访问原始指针的成员函数：tr1::shared_ptr和auto_ptr都提供一个get成员函数，用来执行显示转换，即返回只能指针内部的原始指针。</li>
+<li>隐式方法：提供隐式转换函数。</li>
+</ul>
+</blockquote>
+<p><em>你的内心也可能认为。RAII class内的那个返回原始资源的函数，与“封装”发生矛盾。那是真的，但一般而言它谈不上是什么设计灾难。RAII class并不是为了封装某物而存在。它们的存在是为了确保一个特殊行为——资源释放一定会发生。</em> 许多良好设计的class，它隐藏了客户不需要看的部分，但备妥了客户需要的所有东西。</p>
+<p>请记住：</p>
+<blockquote>
+<ul>
+<li>APIs往往要求访问原始资源，所以每个RAII class应该提供一个“取得原始资源”的方法</li>
+<li>对原始资源的访问可能经由显式转换或隐式转换。一般而言显示转换比较安全，但隐式转换对客户比较方便。</li>
+</ul>
+</blockquote>
+<hr>
+<ul>
+<li>成对使用new和delete时要采取相同形式</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">string</span> * <span class="built_in">array</span> = <span class="keyword">new</span> <span class="built_in">std</span>::<span class="built_in">string</span>[<span class="number">100</span>];</div><div class="line"><span class="keyword">delete</span> <span class="built_in">array</span>;</div></pre></td></tr></table></figure>
+<p>以上代码看起来井然有序，其实是会造成未定义行为。<br>delete最大的问题在于：即将被删除的内存之内究竟有多少对象。实际上这个问题可以更简单一些：即将被删除的那个指针，所指的是单一的对象还是对象数组。单一对象的内存布局一般而言不同于数组的内存布局。更明确的说，数组所用的内存通常还包括“数组大小”的记录，以便delete知道需要调用多少次析构函数。</p>
+<hr>
+<ul>
+<li>以独立语句将newed对象置入智能指针</li>
+</ul>
+<p>考虑如下代码：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">priority</span><span class="params">()</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">processWidget</span><span class="params">(<span class="built_in">std</span>::tr1::<span class="built_in">shared_ptr</span>&lt;Widget&gt; pw, <span class="keyword">int</span> priority)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//以下方式无法通过编译，因为tr1::shared_ptr构造函数是explicit，必须显式调用</span></div><div class="line">processWidget(<span class="keyword">new</span> Widget, priority());</div><div class="line"></div><div class="line">processWidget(<span class="built_in">std</span>::tr1::<span class="built_in">shared_ptr</span>&lt;Widget&gt;(<span class="keyword">new</span> Widget), priority());</div></pre></td></tr></table></figure></p>
+<p>第二种方式可以通过编译，却可能存在资源泄漏。编译器在调用这个函数时，编译器必须创建代码，做以下三件事：</p>
+<ol>
+<li>调用priority</li>
+<li>执行new Widget</li>
+<li>调用tr1::shared_ptr构造函数</li>
+</ol>
+<p>C++编译器以什么样的顺序完成这些事呢？弹性很大。这和java/C#不同，那两种语言总是以特定次序完成函数参数的核算。可以确定是2必定在3之前，但是对于1则可以排在任何位置执行，如果排在2，3之间，如果对1的调用出现异常，那么2中new Widget返回的指针将会丢失，导致在调用过程中可能引发资源泄漏。</p>
+<p>避免这类问题办法很简单：使用分离语句，在单独语句内完成智能指针的构造，然后将智能指针传给函数。因为编译器对于“跨越语句的各项操作”没有重新排列的自由。</p>
+<p>请记住：</p>
+<blockquote>
+<ul>
+<li>以独立语句将newed对象存储于智能指针内。如果不这样做，一旦异常抛出，有可能导致难以察觉的资源泄漏。</li>
+</ul>
+</blockquote>
 
       
     </div>
@@ -376,7 +438,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hello-World/" rel="tag"># Hello World</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/tags/Effective-C/" rel="tag"># Effective C++</a>
           
         </div>
       
@@ -389,15 +453,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/07/静坐常思己过/" rel="next" title="静坐常思己过">
+                <i class="fa fa-chevron-left"></i> 静坐常思己过
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/18/STL容器总览/" rel="prev" title="STL容器总览">
-                STL容器总览 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -456,17 +520,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpeg"
@@ -567,22 +622,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#欢迎来到Crux的个人空间"><span class="nav-number">1.</span> <span class="nav-text">欢迎来到Crux的个人空间</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -734,9 +773,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://mistysoul.github.io/2017/08/16/hello-world/';
-          this.page.identifier = '2017/08/16/hello-world/';
-          this.page.title = '新的开始';
+          this.page.url = 'https://mistysoul.github.io/2017/09/09/Effective-C-三/';
+          this.page.identifier = '2017/09/09/Effective-C-三/';
+          this.page.title = 'Effective C++(三)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://MistySoul.disqus.com/embed.js';
