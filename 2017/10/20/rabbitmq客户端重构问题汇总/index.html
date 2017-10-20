@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="杂感,心得," />
+  <meta name="keywords" content="rabbitmq,消息队列,C,问题记录," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="自16月4月重新入职大华，转岗至开发以来，也快有一年半时间了。感觉有必要记录一下，回过头来重新审视这走来的一路。看看自己的不足。">
-<meta name="keywords" content="杂感,心得">
+<meta name="description" content="工作项目XX云中，由于涉及各模块间消息通信逻辑，放弃内部协议的情况下，已实现部分是将rabbitmq作为消息中间件，完成消息的生产和消费。项目编程语言是C++， rabbitmq官方客户端对于C语言的支持这一块，是由一个rabbitmq-c的开源库来完成的。阅读其源码，并结合实际项目中的使用情况，发现现有库有以下不足  心跳模块：客户端和server端需要进行一定的数据发送来实时感知链路状态。其中">
+<meta name="keywords" content="rabbitmq,消息队列,C,问题记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="静坐常思己过">
-<meta property="og:url" content="https://mistysoul.github.io/2017/09/07/静坐常思己过/index.html">
+<meta property="og:title" content="rabbitmq客户端重构问题汇总">
+<meta property="og:url" content="https://mistysoul.github.io/2017/10/20/rabbitmq客户端重构问题汇总/index.html">
 <meta property="og:site_name" content="Crux&#39;s Notes">
-<meta property="og:description" content="自16月4月重新入职大华，转岗至开发以来，也快有一年半时间了。感觉有必要记录一下，回过头来重新审视这走来的一路。看看自己的不足。">
+<meta property="og:description" content="工作项目XX云中，由于涉及各模块间消息通信逻辑，放弃内部协议的情况下，已实现部分是将rabbitmq作为消息中间件，完成消息的生产和消费。项目编程语言是C++， rabbitmq官方客户端对于C语言的支持这一块，是由一个rabbitmq-c的开源库来完成的。阅读其源码，并结合实际项目中的使用情况，发现现有库有以下不足  心跳模块：客户端和server端需要进行一定的数据发送来实时感知链路状态。其中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-07T13:51:27.000Z">
+<meta property="og:updated_time" content="2017-10-20T09:57:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="静坐常思己过">
-<meta name="twitter:description" content="自16月4月重新入职大华，转岗至开发以来，也快有一年半时间了。感觉有必要记录一下，回过头来重新审视这走来的一路。看看自己的不足。">
+<meta name="twitter:title" content="rabbitmq客户端重构问题汇总">
+<meta name="twitter:description" content="工作项目XX云中，由于涉及各模块间消息通信逻辑，放弃内部协议的情况下，已实现部分是将rabbitmq作为消息中间件，完成消息的生产和消费。项目编程语言是C++， rabbitmq官方客户端对于C语言的支持这一块，是由一个rabbitmq-c的开源库来完成的。阅读其源码，并结合实际项目中的使用情况，发现现有库有以下不足  心跳模块：客户端和server端需要进行一定的数据发送来实时感知链路状态。其中">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://mistysoul.github.io/2017/09/07/静坐常思己过/"/>
+  <link rel="canonical" href="https://mistysoul.github.io/2017/10/20/rabbitmq客户端重构问题汇总/"/>
 
 
 
 
 
-  <title>静坐常思己过 | Crux's Notes</title>
+  <title>rabbitmq客户端重构问题汇总 | Crux's Notes</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/09/07/静坐常思己过/">
+    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/10/20/rabbitmq客户端重构问题汇总/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crux">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">静坐常思己过</h1>
+          <h1 class="post-title" itemprop="name headline">rabbitmq客户端重构问题汇总</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T21:49:59+08:00">
-                2017-09-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T17:56:29+08:00">
+                2017-10-20
               </time>
             
 
@@ -317,9 +317,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/07/静坐常思己过/#comments" itemprop="discussionUrl">
+                <a href="/2017/10/20/rabbitmq客户端重构问题汇总/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/07/静坐常思己过/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/10/20/rabbitmq客户端重构问题汇总/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -347,17 +347,60 @@
       
 
       
-        <p>自16月4月重新入职大华，转岗至开发以来，也快有一年半时间了。感觉有必要记录一下，回过头来重新审视这走来的一路。看看自己的不足。</p>
+        <p>工作项目XX云中，由于涉及各模块间消息通信逻辑，放弃内部协议的情况下，已实现部分是将rabbitmq作为消息中间件，完成消息的生产和消费。项目编程语言是C++， rabbitmq官方客户端对于C语言的支持这一块，是由一个<a href="https://github.com/alanxz/rabbitmq-c" target="_blank" rel="external">rabbitmq-c</a>的开源库来完成的。阅读其源码，并结合实际项目中的使用情况，发现现有库有以下不足</p>
+<ol>
+<li>心跳模块：客户端和server端需要进行一定的数据发送来实时感知链路状态。其中对于服务端来说，达到心跳超时时间之后，会向客户端发送一个心跳包，然后在下一个心跳超时时间之内，只要客户端有任何类型的数据发送至服务端，服务端就可以判断出链接状态的正常，否则服务端在没有收到任何数据时，会认为链路异常，从而主动关闭链路。现有开源库中对于收到服务端心跳包之后，并不会发送任何数据，因此在业务不频繁时，很有可能导致服务端关闭链路。</li>
+<li>底层网络IO交互使用同步模式，阻塞用户线程且性能表现不佳。</li>
+</ol>
+<p>基于以上原因，老夫和另外两名同事近期的工作重点就是对rabbitmq-c端进行重构。<br>貌似有点偏题，本文不是记录重构工作(PS.重构工作基本已经完成，第一个版本已具备基本功能)，而是为了记录在开发测试过程中遇到并且解决的问题，以便帮助记忆。</p>
 <a id="more"></a>
-<p>本文来自于一次谈话。由于入职以来，自问对于领导交给的任务，完成的很出色。同时也注重对问题的深入研究。然而自己所做的一切始终没有体现在绩效上，故而觉得有些不平。与此同时，按照原来和领导沟通的，今年下半年开始，我会转向视频云相关的开发工作。这一点也是我本人比较看重的，一来可以积累实战项目经验；二来可以积累代码量。可是时间到了9月份，整个部门对于我们组（流媒体服务开发组）在视频云项目上的规划迟迟没有出来。导致我们组好多同事都“闲置”了很久。基于以上两点，我决定去找领导聊一下。一来反映一下自己内心的真实想法，再则寻求一些建议，以便自己找到正确的方向。</p>
-<p>谈话进行的很顺利，我将自己想说的都说了出来，包括自己认为的遭受到的不公以及未来该如何改进的迷惑。而领导大部分时间说的内容并没有超出我的想象，无非就是“是金子总会发光的”，“不公或许确实客观存在，但我们应该更多的从自己身上找原因”。如果谈话到这里就结束了的话，我想也就不会有此文了。在谈话的后半部分领导还是给出了几条实质性意见，以至于我内心为之一振，的确，自己在许多方面做得还不够。</p>
+<p>1.64位整型序列化问题</p>
+<p>现象：调用生产者接口向服务端发送消息失败。</p>
+<p>定位过程：</p>
 <blockquote>
 <ul>
-<li>谈绩效：其实大家身在职场，执行是第一位的。也即完成任务只能说合格，远不足以突出。而我很多时候仅仅拿完成任务来要求自己，甚至标榜自己。即使，从横向比较来看，我完成的质量要比其他人好。也正因如此，使我觉得自己已经做的不错了，给公司带来的价值要高于其他人。且不说质量的好坏全凭我自己的主观臆测，也从侧面印证了我对自己的要求过低的事实。虽然感觉自己和之前从事测试时对待事情的态度并没有多少变化，还是一如既往的负责和刨根问底。但好比如说，之前自己做测试，所在的level处于A，自己那么做，超出了大家对level A的员工的预期，之后自己做了开发，毫无疑问，能力肯定是上了一个台阶的，因此，level A眼中的超出预期到了level B也许就是稀松平常了。</li>
-<li>谈方向：从开发人员来说，很多时候仅仅思考如何完成任务，实现需求还是不够的。实现需求的时候想想为什么这么实现？有没有更好的方案？比我优秀的开发工程师来实现会怎么实现？经常多想多做，并且和优秀的人多交流。反思自己，很多时候就是习惯呆在自己的舒适区，习惯上面安排任务，自己负责完成。给自己更多的压力，并且将压力化为动力，在组内，项目内，部门内承担更多的责任。承担责任的同时，意味着更多的压力，走出舒适区。这一过程中，自己也会得到成长。从技术层面来讲，需要将自己的视野扩宽。不要局限于实现某个需求、功能，而是将视野提升到架构、技术层面，将部门内技术与业界主流技术做以横向比较，分辨优劣，并且应用到工作中。</li>
+<li>代码走读，无明显逻辑错误。</li>
+<li>tcpdump&amp;wireshark抓包分析，发现在发送HEADER帧中，body_size字段异常，真实值为10(十进制)，抓包结果显示为0x00000000a00000000(十六进制)</li>
+<li>具体分析该字段在赋值以及序列化阶段的代码逻辑发现，该字段类型为64位整型，对于该字段的序列化处理存在问题。原有代码中对64位整型的序列化和反序列化调用的是Linux系统接口htonl, ntohl，这样就会导致对这字段的前32位数据进行序列化，后32位不变，因此出现了前述的异常值。</li>
 </ul>
 </blockquote>
-<p>恰巧今日在朋友圈内看到一则文字：<strong>静坐常思己过，闲谈莫论人非</strong>。深感适合自己此时的想法，便以此为题，自勉！</p>
+<p>修复过程：</p>
+<blockquote>
+<ul>
+<li>参考原rabbitmq-c开源库中逻辑，对于64位的整型处理，由于没有现成的系统接口可供调用，开源库作者通过将64位整型分成2个32位整型分别处理并且合并的方式来实现。</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLARE_XTOXLL(func)                            \</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">uint64_t</span> func#<span class="meta">#ll(uint64_t val)       \</span></div><div class="line">    &#123;                                                   \</div><div class="line">        <span class="keyword">union</span> &#123;                                         \</div><div class="line">            <span class="keyword">uint64_t</span> whole;                             \</div><div class="line">            <span class="keyword">uint32_t</span> halves[<span class="number">2</span>];                         \</div><div class="line">        &#125; u;                                            \</div><div class="line">        <span class="keyword">uint32_t</span> t;                                     \</div><div class="line">        u.whole = val;                                  \</div><div class="line">        t = u.halves[<span class="number">0</span>];                                \</div><div class="line">        u.halves[<span class="number">0</span>] = func##l(u.halves[<span class="number">1</span>]);             \</div><div class="line">        u.halves[<span class="number">1</span>] = func##l(t);                       \</div><div class="line">        <span class="keyword">return</span> u.whole;                                 \</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(AMQP_BIG_ENDIAN)</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> DECLARE_XTOXLL(func)                            \</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">uint64_t</span> func#<span class="meta">#ll(uint64_t val)       \</span></div><div class="line">    &#123;                                                   \</div><div class="line">        <span class="keyword">union</span> &#123;                                         \</div><div class="line">        <span class="keyword">uint64_t</span> whole;                                 \</div><div class="line">        <span class="keyword">uint32_t</span> halves[<span class="number">2</span>];                             \</div><div class="line">        &#125; u;                                            \</div><div class="line">        u.whole = val;                                  \</div><div class="line">        u.halves[<span class="number">0</span>] = func##l(u.halves[<span class="number">0</span>]);             \</div><div class="line">        u.halves[<span class="number">1</span>] = func##l(u.halves[<span class="number">1</span>]);             \</div><div class="line">        <span class="keyword">return</span> u.whole;                                 \</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">DECLARE_XTOXLL(hton)</div><div class="line">DECLARE_XTOXLL(ntoh)</div></pre></td></tr></table></figure>
+<p>总结：</p>
+<blockquote>
+<ul>
+<li>该问题知识点涵盖了大小端,序列化和反序列化</li>
+<li>C语言union特性</li>
+<li>在序列化和反序列化，通信协议这块，除了自己实现之外，还可以使用一些第三方优秀开源库，例如Google公司的<a href="https://github.com/google/protobuf" target="_blank" rel="external">ProtoBuf</a></li>
+</ul>
+</blockquote>
+<hr>
+<p>2.malloc&amp;free</p>
+<p>现象：消费者收到的消息体中，某些字段(char*)内容异常。消息体中有两个字段分别为char* consume_tag, char* queue。正常显示应为consume_tag = “my message tag”; queue=”helloworld”。而异常情况下，有概率出现consume_tag = “my message tag”;queue=”hellowrold tag”.</p>
+<p>定位过程：</p>
+<blockquote>
+<ul>
+<li>首先分析这两个字段的赋值和内存操作。查看代码核实，每次接收到新的消息时，对于消息体中char*变量指向的内存均是重新申请的，即调用malloc函数，之后在完成赋值，消息处理完成之后进行free内存释放。</li>
+<li>通过gdb运行程序，在接收消息之后的步骤中打断点，进行单步调试，在每次收到消息之后，将消息体内部各字段值print出来，重点分析异常字段的长度，内存首地址</li>
+<li>发现先前分配给consume_tag的内存，有可能在后续中被分配给queue，从而导致在print queue变量时，内容异常。</li>
+<li>分析glibc中malloc和free，glibc中会根据大小将内存分为不同的bin,根据用户申请的大小在不同的bin中分配内存，对于已经free的内存，glibc中类似会将该内存置为可用状态，以供下次用户申请时分配。因此上述问题产生的原因是不可避免的，但是由于消息体中对于消息的长度会有一个len字段来标记，因此用户仍可以取到正确的值。</li>
+</ul>
+</blockquote>
+<p>总结：</p>
+<blockquote>
+<ul>
+<li>gdb工具s(进入函数内部)，b(断点)，c(继续执行)，watch(观察某变量，当其值发生变化时报告)等命令使用</li>
+<li>编译时加上-g符号，便于调试定位</li>
+<li>glibc内存管理（这一块后续将单独整理一份文档来说明）</li>
+</ul>
+</blockquote>
+<hr>
+<p>上面整理的两个问题都是比较基础，有些知识点也不够深入，后面再专门写一份博客来补充好啦。本文就权当笔记之用，以免时间一长便忘得一干二净。</p>
 
       
     </div>
@@ -375,9 +418,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/杂感/" rel="tag"># 杂感</a>
+            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
           
-            <a href="/tags/心得/" rel="tag"># 心得</a>
+            <a href="/tags/消息队列/" rel="tag"># 消息队列</a>
+          
+            <a href="/tags/C/" rel="tag"># C</a>
+          
+            <a href="/tags/问题记录/" rel="tag"># 问题记录</a>
           
         </div>
       
@@ -390,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/04/Effective-C-二/" rel="next" title="Effective C++(二)">
-                <i class="fa fa-chevron-left"></i> Effective C++(二)
+              <a href="/2017/09/21/Effective-C-四/" rel="next" title="Effective C++(四)">
+                <i class="fa fa-chevron-left"></i> Effective C++(四)
               </a>
             
           </div>
@@ -399,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/09/Effective-C-三/" rel="prev" title="Effective C++(三)">
-                Effective C++(三) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -714,9 +757,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://mistysoul.github.io/2017/09/07/静坐常思己过/';
-          this.page.identifier = '2017/09/07/静坐常思己过/';
-          this.page.title = '静坐常思己过';
+          this.page.url = 'https://mistysoul.github.io/2017/10/20/rabbitmq客户端重构问题汇总/';
+          this.page.identifier = '2017/10/20/rabbitmq客户端重构问题汇总/';
+          this.page.title = 'rabbitmq客户端重构问题汇总';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://MistySoul.disqus.com/embed.js';
