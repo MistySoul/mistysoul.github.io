@@ -268,6 +268,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/10/28/libco源码学习-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crux">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crux's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/28/libco源码学习-一/" itemprop="url">libco源码学习(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-28T23:21:30+08:00">
+                2017-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/28/libco源码学习-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/28/libco源码学习-一/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>协程，用一句话来描述就是用户态的轻量级线程。原有线程在调度上都是通过系统来完成的，因此每次切换阻塞都存在额外的开销。多线程在访问一些临界区资源时必须依靠锁等互斥机制。这也是多线程编程难的原因之一。而协程，则是将多协程之间的调度控制权交给了用户，协程<strong>拥有自己的寄存器上下文和栈</strong>。这使得在进行协程调度切换时，可以将寄存器上下文和栈保存到其他地方(where?)，在切回来的时候，就可以恢复先前保存的寄存器上下文和栈，从而继续执行。多个协程其实仍是在单线程内执行，因此也不存在锁，系统调用，函数上下文切换等开销。</p>
+<p>在并发编程中，线程是<strong>抢占式多任务</strong>，而协程则是<strong>协作式多任务</strong>。而由于抢占式调度执行顺序无法确定的特点，使用线程时需要非常小心的处理同步问题，稍有不慎就会出错。而协程则完全不存在这个问题。</p>
+<p>可是在协程实现的细节上有些问题引起了我的兴趣：</p>
+<blockquote>
+<ul>
+<li>可以知道，在函数调用过程中寄存器rbp,rsp(32位ebp,esp)等保存了栈底指针和栈顶指针，依靠这两个寄存器，程序可以在完成函数调用之后继续执行。那么在多个协程的情况下，如果协程自己的寄存器上下文和栈是独占还是共享的，那么在多协程情况下，寄存器上下文和栈的读写必然存在冲突，如何保证其正确性？</li>
+<li>从以上分析来看，似乎每个协程都有一个自己的独立的寄存器上下文和栈显得更为合适且在实现上难度相对来说会容易不少，那么问题又来了，这样的数据保存在哪里？这块空间的大小应该就直接决定了该协程库所支持的并发协程数。</li>
+<li>作为一个库来说，支持并发数如果上不去，必然没有优势。因此寄存器上下文和栈所占内存是否都是从堆上分配的？</li>
+<li>…</li>
+</ul>
+</blockquote>
+<p><a href="https://github.com/Tencent/libco" target="_blank" rel="external">libco</a>是目前微信后台大规模使用的C/C++协程库。号称2013年至今稳定运行在微信后台的数万台机器上。因此学习libco是深入协程技术细节的很好切入点。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/28/libco源码学习-一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/10/27/简述函数调用过程栈和寄存器的操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1071,142 +1217,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mistysoul.github.io/2017/08/30/Effective-C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crux">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Crux's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/30/Effective-C/" itemprop="url">Effective C++</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T22:38:52+08:00">
-                2017-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/30/Effective-C/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/30/Effective-C/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong>C++最初的名称C with Classes，一开始只是C加上一些面向对象特性。今天的C++已经是个多重范型编程语言，一个同时支持过程形式(procedual)、面向对象形式(object-oriented)、函数形式(functional)，泛型形式(generic)，元编程形式(metaprogramming)</strong></p>
-<p>本系列为《Effective C++》的读书笔记。本文为第一章<em>让自己习惯C++</em></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/30/Effective-C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1259,7 +1269,7 @@
             
               <a href="/archives">
             
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1272,7 +1282,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
